@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, Checkbox, Form, Input } from 'antd';
+import { GoogleCircleFilled } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
 	const onFinish = (values) => {
@@ -15,10 +17,10 @@ const Login = () => {
 			<Form
 				name='basic'
 				labelCol={{
-					span: 8,
+					span: 2,
 				}}
 				wrapperCol={{
-					span: 16,
+					span: 10,
 				}}
 				initialValues={{
 					remember: true,
@@ -57,8 +59,8 @@ const Login = () => {
 					name='remember'
 					valuePropName='checked'
 					wrapperCol={{
-						offset: 8,
-						span: 16,
+						offset: 2,
+						span: 10,
 					}}
 				>
 					<Checkbox>Remember me</Checkbox>
@@ -66,8 +68,8 @@ const Login = () => {
 
 				<Form.Item
 					wrapperCol={{
-						offset: 8,
-						span: 16,
+						offset: 2,
+						span: 10,
 					}}
 				>
 					<Button type='primary' htmlType='submit'>
@@ -75,6 +77,13 @@ const Login = () => {
 					</Button>
 				</Form.Item>
 			</Form>
+			<p>Login form added from ant design.</p>
+			<Link to='/'>
+				<GoogleCircleFilled
+					style={{ fontSize: '30px' }}
+					twoToneColor='#eb2f96'
+				/>
+			</Link>
 		</div>
 	);
 };

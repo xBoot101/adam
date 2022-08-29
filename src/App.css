@@ -2,7 +2,6 @@ body {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	text-align: center;
 }
 ul {
 	margin: 0;
@@ -12,11 +11,14 @@ li {
 	list-style: none;
 }
 
+.App {
+	max-width: 1200px;
+	margin: 0 auto;
+}
 .navigation {
 	margin: 20px 0;
 }
 .navigation li {
 	display: inline-block;
-
-	margin: 0 20px;
+	margin-right: 20px;
 }

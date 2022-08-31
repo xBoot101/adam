@@ -60,6 +60,16 @@ const Navbar = () => {
 						Sign up
 					</NavLink>
 				</li>
+				<li>
+					<NavLink
+						to='/menu'
+						style={({ isActive }) =>
+							isActive ? activeStyle : undefined
+						}
+					>
+						Nav Menu
+					</NavLink>
+				</li>
 			</ul>
 		</nav>
 	);

@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import About from './pages/About';
 import Home2 from './pages/Home2';
+import Menu from './pages/NavMenu';
 function App() {
 	return (
 		<div className='App'>
@@ -19,6 +20,7 @@ function App() {
 				<Route path='/login' element={<Login />} />
 				<Route path='/signup' element={<Signup />} />
 				<Route path='/home2' element={<Home2 />} />
+				<Route path='/menu' element={<Menu />} />
 			</Routes>
 		</div>
 	);

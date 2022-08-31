@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
+	AppstoreOutlined,
+	DownOutlined,
+	MailOutlined,
+	PhoneOutlined,
 	SearchOutlined,
+	SettingOutlined,
 	SmileOutlined,
 	TwitterOutlined,
 	UploadOutlined,
@@ -16,6 +21,8 @@ import {
 	Col,
 	Upload,
 	Popconfirm,
+	Dropdown,
+	Menu,
 } from 'antd';
 import './Home.scss';
 
@@ -24,6 +31,28 @@ const style = {
 	background: '#0092ff',
 	padding: '8px 0',
 };
+
+// Dropdown menu item
+
+const menu = (
+	<Menu
+		items={[
+			{
+				label: '1st menu item',
+				key: '1',
+			},
+			{
+				label: '2nd menu item',
+				key: '2',
+			},
+			{
+				label: '3rd menu item',
+				key: '3',
+			},
+		]}
+	/>
+);
+
 const Home = () => {
 	return (
 		<div>
@@ -126,6 +155,53 @@ const Home = () => {
 							<Button>Confirm</Button>
 						</Popconfirm>
 					</Space>
+				</Col>
+				<Col span={6}>
+					{/* Dropdown menu */}
+					<Dropdown overlay={menu}>
+						<a onClick={(e) => e.preventDefault()} href='/'>
+							<Space>
+								Hover me
+								<DownOutlined />
+							</Space>
+						</a>
+					</Dropdown>
+				</Col>
+				<Col span={12}>
+					<Menu mode='horizontal' defaultSelectedKeys={['mail']}>
+						<Menu.Item key='mail' icon={<MailOutlined />}>
+							Navigation One
+						</Menu.Item>
+						<Menu.SubMenu
+							key='SubMenu'
+							title='Navigation Two - Submenu'
+							icon={<SettingOutlined />}
+						>
+							<Menu.Item key='two' icon={<AppstoreOutlined />}>
+								Navigation Two
+							</Menu.Item>
+							<Menu.Item key='three' icon={<AppstoreOutlined />}>
+								Navigation Three
+							</Menu.Item>
+							<Menu.ItemGroup title='Item Group'>
+								<Menu.Item
+									key='four'
+									icon={<AppstoreOutlined />}
+								>
+									Navigation Four
+								</Menu.Item>
+								<Menu.Item
+									key='five'
+									icon={<AppstoreOutlined />}
+								>
+									Navigation Five
+								</Menu.Item>
+							</Menu.ItemGroup>
+						</Menu.SubMenu>
+						<Menu.Item key='call' icon={<PhoneOutlined />}>
+							Navigation Six
+						</Menu.Item>
+					</Menu>
 				</Col>
 			</Row>
 		</div>

@@ -1,0 +1,29 @@
+body {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+ul {
+	margin: 0;
+	padding: 0;
+}
+li {
+	list-style: none;
+}
+
+.App {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+.navigation {
+	margin: 20px 0;
+}
+.navigation li {
+	display: inline-block;
+	margin-right: 20px;
+}
+
+.my-col {
+	background: #0092ff;
+	padding: 8px 0;
+}

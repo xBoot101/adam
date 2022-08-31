@@ -1,4 +1,4 @@
-import { Divider } from 'antd';
+import { Col, Divider, Row } from 'antd';
 import React from 'react';
 
 const About = () => {
@@ -15,6 +15,27 @@ const About = () => {
 			<span>Hello</span>
 			<Divider orientation='left'>Horizontal</Divider>
 			<Divider></Divider>
+			<Row>
+				<Col className='my-col' span={8}>
+					col-8
+				</Col>
+				<Col className='my-col' span={8} offset={8}>
+					col-8
+				</Col>
+			</Row>
+			<Row>
+				<Col className='my-col' span={6} offset={6}>
+					col-6 col-offset-6
+				</Col>
+				<Col className='my-col' span={6} offset={6}>
+					col-6 col-offset-6
+				</Col>
+			</Row>
+			<Row>
+				<Col className='my-col' span={12} offset={6}>
+					col-12 col-offset-6
+				</Col>
+			</Row>
 		</div>
 	);
 };

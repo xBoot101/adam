@@ -5,7 +5,7 @@ import {
 	SmileOutlined,
 	TwitterOutlined,
 } from '@ant-design/icons';
-import { Button, Tooltip, Space, Divider, Typography } from 'antd';
+import { Button, Tooltip, Space, Divider, Typography, Row, Col } from 'antd';
 import './Home.scss';
 
 const { Title, Paragraph, Text } = Typography;
@@ -65,6 +65,44 @@ const Home = () => {
 					</Button>
 				</Tooltip>
 			</Space>
+			<h2>Learn Ant Design Grid</h2>
+			<Row>
+				<Col span={24}>col</Col>
+			</Row>
+			<Row>
+				<Col span={12}>col-12</Col>
+				<Col span={12}>col-12</Col>
+			</Row>
+			<Row>
+				<Col span={8}>col-8</Col>
+				<Col span={8}>col-8</Col>
+				<Col span={8}>col-8</Col>
+			</Row>
+			<Row>
+				<Col span={6}>col-6</Col>
+				<Col span={6}>col-6</Col>
+				<Col span={6}>col-6</Col>
+				<Col span={6}>col-6</Col>
+			</Row>
+			<Row>
+				<Col span={8}>col-8</Col>
+				<Col span={8} offset={8}>
+					col-8
+				</Col>
+			</Row>
+			<Row>
+				<Col span={6} offset={6}>
+					col-6 col-offset-6
+				</Col>
+				<Col span={6} offset={6}>
+					col-6 col-offset-6
+				</Col>
+			</Row>
+			<Row>
+				<Col span={12} offset={6}>
+					col-12 col-offset-6
+				</Col>
+			</Row>
 		</div>
 	);
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
 	AppstoreOutlined,
@@ -23,6 +23,13 @@ import {
 	Popconfirm,
 	Dropdown,
 	Menu,
+	PageHeader,
+	Descriptions,
+	Tabs,
+	Statistic,
+	Pagination,
+	Steps,
+	message,
 } from 'antd';
 import './Home.scss';
 
@@ -31,6 +38,56 @@ const style = {
 	background: '#0092ff',
 	padding: '8px 0',
 };
+// Pagination function
+const onChange = (pageNumber) => {
+	console.log('Page: ', pageNumber);
+};
+// Page header tabs
+const { TabPane } = Tabs;
+
+// Steps to compete the tasks
+
+const { Step } = Steps;
+
+const renderContent = (column = 2) => (
+	<Descriptions size='small' column={column}>
+		<Descriptions.Item label='Created'>Lili Qu</Descriptions.Item>
+		<Descriptions.Item label='Association'>
+			<a>421421</a>
+		</Descriptions.Item>
+		<Descriptions.Item label='Creation Time'>2017-01-10</Descriptions.Item>
+		<Descriptions.Item label='Effective Time'>2017-10-10</Descriptions.Item>
+		<Descriptions.Item label='Remarks'>
+			Gonghu Road, Xihu District, Hangzhou, Zhejiang, China
+		</Descriptions.Item>
+	</Descriptions>
+);
+
+const extraContent = (
+	<div
+		style={{
+			display: 'flex',
+			width: 'max-content',
+			justifyContent: 'flex-end',
+		}}
+	>
+		<Statistic
+			title='Status'
+			value='Pending'
+			style={{
+				marginRight: 32,
+			}}
+		/>
+		<Statistic title='Price' prefix='$' value={568.08} />
+	</div>
+);
+
+const Content = ({ children, extra }) => (
+	<div className='content'>
+		<div className='main'>{children}</div>
+		<div className='extra'>{extra}</div>
+	</div>
+);
 
 // Dropdown menu item
 
@@ -54,9 +111,71 @@ const menu = (
 );
 
 const Home = () => {
+	const steps = [
+		{
+			title: 'First',
+			content: 'First-content',
+		},
+		{
+			title: 'Second',
+			content: 'Second-content',
+		},
+		{
+			title: 'Last',
+			content: 'Last-content',
+		},
+	];
+
+	const [current, setCurrent] = useState(0);
+
+	const next = () => {
+		setCurrent(current + 1);
+	};
+
+	const prev = () => {
+		setCurrent(current - 1);
+	};
 	return (
 		<div>
 			<h2>Home page</h2>
+			<Divider></Divider>
+			<Steps current={1}>
+				<Step title='Finished' description='This is a description.' />
+				<Step
+					title='In Progress'
+					subTitle='Left 00:00:08'
+					description='This is a description.'
+				/>
+				<Step title='Waiting' description='This is a description.' />
+			</Steps>
+			<Divider></Divider>
+			<h3>Switch Steps</h3>
+			<Steps current={current}>
+				{steps.map((item) => (
+					<Step key={item.title} title={item.title} />
+				))}
+			</Steps>
+			<div className='steps-content'>{steps[current].content}</div>
+			<div className='steps-action'>
+				{current < steps.length - 1 && (
+					<Button type='primary' onClick={() => next()}>
+						Next
+					</Button>
+				)}
+				{current === steps.length - 1 && (
+					<Button
+						type='primary'
+						onClick={() => message.success('Processing complete!')}
+					>
+						Done
+					</Button>
+				)}
+				{current > 0 && (
+					<Button style={{ margin: '0 8px' }} onClick={() => prev()}>
+						Previous
+					</Button>
+				)}
+			</div>
 			<Divider></Divider>
 			<Typography>
 				<Title>Introduction</Title>
@@ -89,7 +208,6 @@ const Home = () => {
 
 				<Divider />
 			</Typography>
-
 			<Text>Ant Design Icon</Text>
 			<Space>
 				<br />
@@ -204,6 +322,82 @@ const Home = () => {
 					</Menu>
 				</Col>
 			</Row>
+			<div className='site-page-header-ghost-wrapper'>
+				<PageHeader
+					ghost={false}
+					onBack={() => window.history.back()}
+					title='Rider'
+					subTitle='This is a Rider subtitle'
+					extra={[
+						<Button key='3'>Operation</Button>,
+						<Button key='2'>Operation</Button>,
+						<Button key='1' type='primary'>
+							Primary
+						</Button>,
+					]}
+				>
+					<Descriptions size='small' column={3}>
+						<Descriptions.Item label='Created'>
+							Bangle Tiger.
+						</Descriptions.Item>
+						<Descriptions.Item label='Association'>
+							<a>421421</a>
+						</Descriptions.Item>
+						<Descriptions.Item label='Creation Time'>
+							2022-09-10
+						</Descriptions.Item>
+						<Descriptions.Item label='Effective Time'>
+							2022-12-10
+						</Descriptions.Item>
+						<Descriptions.Item label='Remarks'>
+							Mohammadpur , Dhaka, Bangladesh
+						</Descriptions.Item>
+					</Descriptions>
+				</PageHeader>
+			</div>
+			<h2>
+				Page Header Responsive: Under different screen sizes, there
+				should be different performance
+			</h2>
+			<PageHeader
+				className='site-page-header-responsive'
+				style={{ backgroundColor: '#ddd' }}
+				onBack={() => window.history.back()}
+				title='Title'
+				subTitle='This is a subtitle'
+				extra={[
+					<Button key='3'>Operation</Button>,
+					<Button key='2'>Operation</Button>,
+					<Button key='1' type='primary'>
+						Primary
+					</Button>,
+				]}
+				footer={
+					<Tabs defaultActiveKey='1'>
+						<TabPane tab='Details' key='1' />
+						<TabPane tab='Rule' key='2' />
+					</Tabs>
+				}
+			>
+				<Content extra={extraContent}>{renderContent()}</Content>
+			</PageHeader>
+			<h3>Basic Pagination</h3>
+			<Pagination defaultCurrent={1} total={50} />
+
+			<Pagination
+				showQuickJumper
+				defaultCurrent={2}
+				total={500}
+				onChange={onChange}
+			/>
+			<br />
+			<Pagination
+				showQuickJumper
+				defaultCurrent={2}
+				total={500}
+				onChange={onChange}
+				disabled
+			/>
 		</div>
 	);
 };

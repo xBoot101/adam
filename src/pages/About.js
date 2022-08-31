@@ -1,5 +1,10 @@
-import { Col, Divider, Row } from 'antd';
+import { Col, Divider, Row, Typography } from 'antd';
 import React from 'react';
+const { Title } = Typography;
+const style = {
+	background: '#0092ff',
+	padding: '8px 0',
+};
 
 const About = () => {
 	return (
@@ -15,25 +20,46 @@ const About = () => {
 			<span>Hello</span>
 			<Divider orientation='left'>Horizontal</Divider>
 			<Divider></Divider>
-			<Row>
-				<Col className='my-col' span={8}>
-					col-8
+			<Row gutter={10}>
+				<Col className='gutter-row' span={6}>
+					<div style={style}>col-6</div>
+				</Col>{' '}
+				<Col className='gutter-row' span={6}>
+					<div style={style}>col-6</div>
 				</Col>
-				<Col className='my-col' span={8} offset={8}>
-					col-8
+				<Col className='gutter-row' span={6}>
+					<div style={style}>col-6</div>
+				</Col>
+				<Col className='gutter-row' span={6}>
+					<div style={style}>col-6</div>
+				</Col>
+				<Col className='gutter-row' span={6}>
+					<div style={style}>col-6</div>
 				</Col>
 			</Row>
-			<Row>
-				<Col className='my-col' span={6} offset={6}>
-					col-6 col-offset-6
+
+			<Title level={2}>Responsive Grid Ant Design</Title>
+			<Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+				<Col xs={2} sm={4} md={6} lg={8} xl={10} span={6}>
+					<div style={style}>col-6</div>
 				</Col>
-				<Col className='my-col' span={6} offset={6}>
-					col-6 col-offset-6
+				<Col span={6}>
+					<div style={style}>col-6</div>
 				</Col>
-			</Row>
-			<Row>
-				<Col className='my-col' span={12} offset={6}>
-					col-12 col-offset-6
+				<Col span={6}>
+					<div style={style}>col-6</div>
+				</Col>
+				<Col span={6}>
+					<div style={style}>col-6</div>
+				</Col>
+				<Col span={6}>
+					<div style={style}>col-6</div>
+				</Col>
+				<Col span={6}>
+					<div style={style}>col-6</div>
+				</Col>
+				<Col span={6}>
+					<div style={style}>col-6</div>
 				</Col>
 			</Row>
 		</div>

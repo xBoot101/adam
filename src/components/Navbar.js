@@ -22,6 +22,16 @@ const Navbar = () => {
 				</li>
 				<li>
 					<NavLink
+						to='/home2'
+						style={({ isActive }) =>
+							isActive ? activeStyle : undefined
+						}
+					>
+						Home2
+					</NavLink>
+				</li>
+				<li>
+					<NavLink
 						to='/about'
 						style={({ isActive }) =>
 							isActive ? activeStyle : undefined

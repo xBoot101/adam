@@ -4,14 +4,29 @@ import {
 	SearchOutlined,
 	SmileOutlined,
 	TwitterOutlined,
+	UploadOutlined,
 } from '@ant-design/icons';
-import { Button, Tooltip, Space, Divider, Typography, Row, Col } from 'antd';
+import {
+	Button,
+	Tooltip,
+	Space,
+	Divider,
+	Typography,
+	Row,
+	Col,
+	Upload,
+	Popconfirm,
+} from 'antd';
 import './Home.scss';
 
 const { Title, Paragraph, Text } = Typography;
+const style = {
+	background: '#0092ff',
+	padding: '8px 0',
+};
 const Home = () => {
 	return (
-		<div className='container'>
+		<div>
 			<h2>Home page</h2>
 			<Divider></Divider>
 			<Typography>
@@ -66,41 +81,51 @@ const Home = () => {
 				</Tooltip>
 			</Space>
 			<h2>Learn Ant Design Grid</h2>
-			<Row>
-				<Col span={24}>col</Col>
-			</Row>
-			<Row>
-				<Col span={12}>col-12</Col>
-				<Col span={12}>col-12</Col>
-			</Row>
-			<Row>
-				<Col span={8}>col-8</Col>
-				<Col span={8}>col-8</Col>
-				<Col span={8}>col-8</Col>
-			</Row>
-			<Row>
-				<Col span={6}>col-6</Col>
-				<Col span={6}>col-6</Col>
-				<Col span={6}>col-6</Col>
-				<Col span={6}>col-6</Col>
-			</Row>
-			<Row>
-				<Col span={8}>col-8</Col>
-				<Col span={8} offset={8}>
-					col-8
+			<Row gutter={[16, 24]}>
+				<Col className='gutter-row' span={6}>
+					<div style={style}>col-6</div>
 				</Col>
-			</Row>
-			<Row>
-				<Col span={6} offset={6}>
-					col-6 col-offset-6
+				<Col className='gutter-row' span={6}>
+					<div style={style}>col-6</div>
 				</Col>
-				<Col span={6} offset={6}>
-					col-6 col-offset-6
+				<Col className='gutter-row' span={6}>
+					<div style={style}>col-6</div>
 				</Col>
-			</Row>
-			<Row>
-				<Col span={12} offset={6}>
-					col-12 col-offset-6
+				<Col className='gutter-row' span={6}>
+					<div style={style}>col-6</div>
+				</Col>
+				<Col className='gutter-row' span={6}>
+					<div style={style}>col-6</div>
+				</Col>
+				<Col className='gutter-row' span={6}>
+					<div style={style}>col-6</div>
+				</Col>
+				<Col className='gutter-row' span={6}>
+					<div style={style}>col-6</div>
+				</Col>
+				<Col className='gutter-row' span={6}>
+					<div style={style}>col-6</div>
+				</Col>
+
+				<Col span={24}>
+					<Space>
+						<Text>
+							Space using Crowded components horizontal spacing.
+						</Text>
+						<Button type='primary'>Button</Button>
+						<Upload>
+							<Button>
+								<UploadOutlined /> Click to Upload
+							</Button>
+						</Upload>
+						<Popconfirm
+							title='Are you sure delete this task?'
+							okText='Yes'
+							cancelText='No'
+						>
+							<Button>Confirm</Button>
+						</Popconfirm>
+					</Space>
 				</Col>
 			</Row>
 		</div>

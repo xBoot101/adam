@@ -8,7 +8,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import About from './pages/About';
 import Home2 from './pages/Home2';
-import Menu from './pages/NavMenu';
+import NavMenu from './pages/NavMenu';
+import Content from './pages/Content';
 function App() {
 	return (
 		<div className='App'>
@@ -20,7 +21,8 @@ function App() {
 				<Route path='/login' element={<Login />} />
 				<Route path='/signup' element={<Signup />} />
 				<Route path='/home2' element={<Home2 />} />
-				<Route path='/menu' element={<Menu />} />
+				<Route path='/menu' element={<NavMenu />} />
+				<Route path='/content' element={<Content />} />
 			</Routes>
 		</div>
 	);

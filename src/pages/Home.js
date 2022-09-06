@@ -10,6 +10,7 @@ import {
 	SmileOutlined,
 	TwitterOutlined,
 	UploadOutlined,
+	VerticalAlignTopOutlined,
 } from '@ant-design/icons';
 import {
 	Button,
@@ -30,6 +31,8 @@ import {
 	Pagination,
 	Steps,
 	message,
+	DatePicker,
+	BackTop,
 } from 'antd';
 import './Home.scss';
 
@@ -52,9 +55,7 @@ const { Step } = Steps;
 const renderContent = (column = 2) => (
 	<Descriptions size='small' column={column}>
 		<Descriptions.Item label='Created'>Lili Qu</Descriptions.Item>
-		<Descriptions.Item label='Association'>
-			<a>421421</a>
-		</Descriptions.Item>
+		<Descriptions.Item label='Association'>421421</Descriptions.Item>
 		<Descriptions.Item label='Creation Time'>2017-01-10</Descriptions.Item>
 		<Descriptions.Item label='Effective Time'>2017-10-10</Descriptions.Item>
 		<Descriptions.Item label='Remarks'>
@@ -340,9 +341,7 @@ const Home = () => {
 						<Descriptions.Item label='Created'>
 							Bangle Tiger.
 						</Descriptions.Item>
-						<Descriptions.Item label='Association'>
-							<a>421421</a>
-						</Descriptions.Item>
+
 						<Descriptions.Item label='Creation Time'>
 							2022-09-10
 						</Descriptions.Item>
@@ -380,8 +379,25 @@ const Home = () => {
 				}
 			>
 				<Content extra={extraContent}>{renderContent()}</Content>
+				<DatePicker />
 			</PageHeader>
 			<h3>Basic Pagination</h3>
+			<BackTop>
+				<div
+					style={{
+						height: 40,
+						width: 40,
+						lineHeight: '40px',
+						borderRadius: 4,
+						backgroundColor: '#1088e9',
+						color: '#fff',
+						textAlign: 'center',
+						fontSize: 20,
+					}}
+				>
+					<VerticalAlignTopOutlined />
+				</div>
+			</BackTop>
 			<Pagination defaultCurrent={1} total={50} />
 
 			<Pagination

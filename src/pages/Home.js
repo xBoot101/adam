@@ -33,6 +33,7 @@ import {
 	message,
 	DatePicker,
 	BackTop,
+	Card,
 } from 'antd';
 import './Home.scss';
 
@@ -110,6 +111,10 @@ const menu = (
 		]}
 	/>
 );
+const colStyle = {
+	background: '#0092ff',
+	padding: '8px 0',
+};
 
 const Home = () => {
 	const steps = [
@@ -381,6 +386,114 @@ const Home = () => {
 				<Content extra={extraContent}>{renderContent()}</Content>
 				<DatePicker />
 			</PageHeader>
+			<Row
+				style={{ margin: '20px 0 20px 0' }}
+				gutter={[
+					24,
+					{
+						xs: 16,
+						sm: 24,
+						md: 24,
+						lg: 32,
+					},
+				]}
+			>
+				<Col className='gutter-row' span={6}>
+					<div style={colStyle}>col-6</div>
+				</Col>
+				<Col className='gutter-row' span={6}>
+					<div style={colStyle}>col-6</div>
+				</Col>
+				<Col className='gutter-row' span={6}>
+					<div style={colStyle}>col-6</div>
+				</Col>
+				<Col className='gutter-row' span={6}>
+					<div style={colStyle}>col-6</div>
+				</Col>{' '}
+				<Col className='gutter-row' span={6}>
+					<div style={colStyle}>col-6</div>
+				</Col>{' '}
+				<Col className='gutter-row' span={6}>
+					<div style={colStyle}>col-6</div>
+				</Col>{' '}
+				<Col className='gutter-row' span={6}>
+					<div style={colStyle}>col-6</div>
+				</Col>{' '}
+				<Col className='gutter-row' span={6}>
+					<div style={colStyle}>col-6</div>
+				</Col>
+			</Row>
+			<Row
+				style={{ margin: '20px 0' }}
+				// gutter={[16, { xs: 8, sm: 16, md: 24, lg: 32 }]}
+				gutter={[16, 24]}
+			>
+				<Col span={6}>
+					<Card
+						title='Default size card'
+						extra={<a href='#'>More</a>}
+						style={{
+							width: 300,
+						}}
+					>
+						<p>Card content</p>
+						<p>Card content</p>
+						<p>Card content</p>
+					</Card>
+				</Col>
+				<Col span={6}>
+					<Card
+						title='Default size card'
+						extra={<a href='#'>More</a>}
+						style={{
+							width: 300,
+						}}
+					>
+						<p>Card content</p>
+						<p>Card content</p>
+						<p>Card content</p>
+					</Card>
+				</Col>
+				<Col span={6}>
+					<Card
+						title='Default size card'
+						extra={<a href='#'>More</a>}
+						style={{
+							width: 300,
+						}}
+					>
+						<p>Card content</p>
+						<p>Card content</p>
+						<p>Card content</p>
+					</Card>
+				</Col>
+				<Col span={6}>
+					<Card
+						title='Default size card'
+						extra={<a href='#'>More</a>}
+						style={{
+							width: 300,
+						}}
+					>
+						<p>Card content</p>
+						<p>Card content</p>
+						<p>Card content</p>
+					</Card>
+				</Col>
+				<Col span={6}>
+					<Card
+						title='Default size card'
+						extra={<a href='#'>More</a>}
+						style={{
+							width: 300,
+						}}
+					>
+						<p>Card content</p>
+						<p>Card content</p>
+						<p>Card content</p>
+					</Card>
+				</Col>
+			</Row>
 			<h3>Basic Pagination</h3>
 			<BackTop>
 				<div

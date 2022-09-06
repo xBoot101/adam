@@ -10,11 +10,12 @@ import About from './pages/About';
 import Home2 from './pages/Home2';
 import NavMenu from './pages/NavMenu';
 import Content from './pages/Content';
+import Carousel from './pages/myCarousel';
 function App() {
 	return (
 		<div className='App'>
 			<Navbar></Navbar>
-
+			<Carousel></Carousel>
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/about' element={<About />} />

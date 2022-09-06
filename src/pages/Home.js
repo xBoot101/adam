@@ -145,6 +145,7 @@ const Home = () => {
 		<div>
 			<h2>Home page</h2>
 			<Divider></Divider>
+			<Divider></Divider>
 			<Steps current={1}>
 				<Step title='Finished' description='This is a description.' />
 				<Step
@@ -431,7 +432,7 @@ const Home = () => {
 				<Col span={6}>
 					<Card
 						title='Default size card'
-						extra={<a href='#'>More</a>}
+						extra={<a href='/'>More</a>}
 						style={{
 							width: 300,
 						}}
@@ -444,7 +445,7 @@ const Home = () => {
 				<Col span={6}>
 					<Card
 						title='Default size card'
-						extra={<a href='#'>More</a>}
+						extra={<a href='/'>More</a>}
 						style={{
 							width: 300,
 						}}
@@ -457,7 +458,7 @@ const Home = () => {
 				<Col span={6}>
 					<Card
 						title='Default size card'
-						extra={<a href='#'>More</a>}
+						extra={<a href='/'>More</a>}
 						style={{
 							width: 300,
 						}}
@@ -470,7 +471,7 @@ const Home = () => {
 				<Col span={6}>
 					<Card
 						title='Default size card'
-						extra={<a href='#'>More</a>}
+						extra={<a href='/'>More</a>}
 						style={{
 							width: 300,
 						}}
@@ -483,7 +484,7 @@ const Home = () => {
 				<Col span={6}>
 					<Card
 						title='Default size card'
-						extra={<a href='#'>More</a>}
+						extra={<a href='/'>More</a>}
 						style={{
 							width: 300,
 						}}

@@ -34,8 +34,12 @@ import {
 	DatePicker,
 	BackTop,
 	Card,
+	Collapse,
+	Image,
+	Popover,
 } from 'antd';
 import './Home.scss';
+const { Panel } = Collapse;
 
 const { Title, Paragraph, Text } = Typography;
 const style = {
@@ -144,7 +148,103 @@ const Home = () => {
 	return (
 		<div>
 			<h2>Home page</h2>
-			<Divider></Divider>
+			<Divider> Image </Divider>
+			<Image.PreviewGroup>
+				<Image
+					width={200}
+					src='https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'
+				/>
+				<Image
+					width={200}
+					src='https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
+				/>
+
+				<Image
+					width={200}
+					src='https://cdn-www.mandatory.com/assets/uploads/2013/04/Iron-Man-Anime-1.jpg'
+					preview={{
+						src: 'https://cdn-www.mandatory.com/assets/uploads/2013/04/Iron-Man-Anime-1.jpg',
+					}}
+				/>
+			</Image.PreviewGroup>
+
+			<Divider>
+				{' '}
+				Drawer. Drawer is A panel which slides in from the edge of the
+				screen.
+			</Divider>
+			<Divider> Tabs </Divider>
+			<Tabs defaultActiveKey='1'>
+				<Tabs.TabPane tab='Tab 1' key='1'>
+					Hello. Content of Tab Pane 1
+				</Tabs.TabPane>
+				<Tabs.TabPane tab='Tab 2' key='2'>
+					Hi. Content of Tab Pane 2
+				</Tabs.TabPane>
+				<Tabs.TabPane tab='Tab 3' key='3'>
+					Bye. Content of Tab Pane 3
+				</Tabs.TabPane>
+			</Tabs>
+			<Divider> Statistic </Divider>
+			<Row gutter={16}>
+				<Col span={12}>
+					<Statistic title='Active Users' value={112893} />
+				</Col>
+				<Col span={12}>
+					<Statistic
+						title='Account Balance (CNY)'
+						value={112893}
+						precision={2}
+					/>
+					<Button
+						style={{
+							marginTop: 16,
+						}}
+						type='primary'
+					>
+						Recharge
+					</Button>
+				</Col>
+				<Col span={12}>
+					<Statistic title='Active Users' value={112893} loading />
+				</Col>
+			</Row>
+			<Divider> Accordion </Divider>
+			<Popover
+				content={`Hover me to get extra information`}
+				title='Title'
+			>
+				<Button type='primary'>Hover me</Button>
+			</Popover>
+			<Collapse accordion>
+				<Panel header='This is panel header 1' key='1'>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Ab provident dicta alias perferendis aliquam magni sit
+						voluptatem laborum dolore, culpa itaque praesentium
+						neque tempora, exercitationem non, mollitia dolor nihil
+						cumque!
+					</p>
+				</Panel>
+				<Panel header='This is panel header 2' key='2'>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Ab provident dicta alias perferendis aliquam magni sit
+						voluptatem laborum dolore, culpa itaque praesentium
+						neque tempora, exercitationem non, mollitia dolor nihil
+						cumque!
+					</p>
+				</Panel>
+				<Panel header='This is panel header 3' key='3'>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Ab provident dicta alias perferendis aliquam magni sit
+						voluptatem laborum dolore, culpa itaque praesentium
+						neque tempora, exercitationem non, mollitia dolor nihil
+						cumque!
+					</p>
+				</Panel>
+			</Collapse>
 			<Divider></Divider>
 			<Steps current={1}>
 				<Step title='Finished' description='This is a description.' />
@@ -388,7 +488,6 @@ const Home = () => {
 				<DatePicker />
 			</PageHeader>
 			<Row
-				style={{ margin: '20px 0 20px 0' }}
 				gutter={[
 					24,
 					{
@@ -425,7 +524,7 @@ const Home = () => {
 				</Col>
 			</Row>
 			<Row
-				style={{ margin: '20px 0' }}
+				// style={{ margin: '20px 0' }}
 				// gutter={[16, { xs: 8, sm: 16, md: 24, lg: 32 }]}
 				gutter={[16, 24]}
 			>

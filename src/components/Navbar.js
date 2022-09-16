@@ -70,6 +70,16 @@ const Navbar = () => {
 						Nav Menu
 					</NavLink>
 				</li>
+				<li>
+					<NavLink
+						to='/content'
+						style={({ isActive }) =>
+							isActive ? activeStyle : undefined
+						}
+					>
+						Content
+					</NavLink>
+				</li>
 			</ul>
 		</nav>
 	);

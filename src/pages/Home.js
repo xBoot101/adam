@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
 	AppstoreOutlined,
@@ -10,6 +10,7 @@ import {
 	SmileOutlined,
 	TwitterOutlined,
 	UploadOutlined,
+	VerticalAlignTopOutlined,
 } from '@ant-design/icons';
 import {
 	Button,
@@ -23,14 +24,76 @@ import {
 	Popconfirm,
 	Dropdown,
 	Menu,
+	PageHeader,
+	Descriptions,
+	Tabs,
+	Statistic,
+	Pagination,
+	Steps,
+	message,
+	DatePicker,
+	BackTop,
+	Card,
+	Collapse,
+	Image,
+	Popover,
 } from 'antd';
 import './Home.scss';
+const { Panel } = Collapse;
 
 const { Title, Paragraph, Text } = Typography;
 const style = {
 	background: '#0092ff',
 	padding: '8px 0',
 };
+// Pagination function
+const onChange = (pageNumber) => {
+	console.log('Page: ', pageNumber);
+};
+// Page header tabs
+const { TabPane } = Tabs;
+
+// Steps to compete the tasks
+
+const { Step } = Steps;
+
+const renderContent = (column = 2) => (
+	<Descriptions size='small' column={column}>
+		<Descriptions.Item label='Created'>Lili Qu</Descriptions.Item>
+		<Descriptions.Item label='Association'>421421</Descriptions.Item>
+		<Descriptions.Item label='Creation Time'>2017-01-10</Descriptions.Item>
+		<Descriptions.Item label='Effective Time'>2017-10-10</Descriptions.Item>
+		<Descriptions.Item label='Remarks'>
+			Gonghu Road, Xihu District, Hangzhou, Zhejiang, China
+		</Descriptions.Item>
+	</Descriptions>
+);
+
+const extraContent = (
+	<div
+		style={{
+			display: 'flex',
+			width: 'max-content',
+			justifyContent: 'flex-end',
+		}}
+	>
+		<Statistic
+			title='Status'
+			value='Pending'
+			style={{
+				marginRight: 32,
+			}}
+		/>
+		<Statistic title='Price' prefix='$' value={568.08} />
+	</div>
+);
+
+const Content = ({ children, extra }) => (
+	<div className='content'>
+		<div className='main'>{children}</div>
+		<div className='extra'>{extra}</div>
+	</div>
+);
 
 // Dropdown menu item
 
@@ -52,11 +115,174 @@ const menu = (
 		]}
 	/>
 );
+const colStyle = {
+	background: '#0092ff',
+	padding: '8px 0',
+};
 
 const Home = () => {
+	const steps = [
+		{
+			title: 'First',
+			content: 'First-content',
+		},
+		{
+			title: 'Second',
+			content: 'Second-content',
+		},
+		{
+			title: 'Last',
+			content: 'Last-content',
+		},
+	];
+
+	const [current, setCurrent] = useState(0);
+
+	const next = () => {
+		setCurrent(current + 1);
+	};
+
+	const prev = () => {
+		setCurrent(current - 1);
+	};
 	return (
 		<div>
 			<h2>Home page</h2>
+			<Divider> Image </Divider>
+			<Image.PreviewGroup>
+				<Image
+					width={200}
+					src='https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'
+				/>
+				<Image
+					width={200}
+					src='https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg'
+				/>
+
+				<Image
+					width={200}
+					src='https://cdn-www.mandatory.com/assets/uploads/2013/04/Iron-Man-Anime-1.jpg'
+					preview={{
+						src: 'https://cdn-www.mandatory.com/assets/uploads/2013/04/Iron-Man-Anime-1.jpg',
+					}}
+				/>
+			</Image.PreviewGroup>
+
+			<Divider>
+				{' '}
+				Drawer. Drawer is A panel which slides in from the edge of the
+				screen.
+			</Divider>
+			<Divider> Tabs </Divider>
+			<Tabs defaultActiveKey='1'>
+				<Tabs.TabPane tab='Tab 1' key='1'>
+					Hello. Content of Tab Pane 1
+				</Tabs.TabPane>
+				<Tabs.TabPane tab='Tab 2' key='2'>
+					Hi. Content of Tab Pane 2
+				</Tabs.TabPane>
+				<Tabs.TabPane tab='Tab 3' key='3'>
+					Bye. Content of Tab Pane 3
+				</Tabs.TabPane>
+			</Tabs>
+			<Divider> Statistic </Divider>
+			<Row gutter={16}>
+				<Col span={12}>
+					<Statistic title='Active Users' value={112893} />
+				</Col>
+				<Col span={12}>
+					<Statistic
+						title='Account Balance (CNY)'
+						value={112893}
+						precision={2}
+					/>
+					<Button
+						style={{
+							marginTop: 16,
+						}}
+						type='primary'
+					>
+						Recharge
+					</Button>
+				</Col>
+				<Col span={12}>
+					<Statistic title='Active Users' value={112893} loading />
+				</Col>
+			</Row>
+			<Divider> Accordion </Divider>
+			<Popover
+				content={`Hover me to get extra information`}
+				title='Title'
+			>
+				<Button type='primary'>Hover me</Button>
+			</Popover>
+			<Collapse accordion>
+				<Panel header='This is panel header 1' key='1'>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Ab provident dicta alias perferendis aliquam magni sit
+						voluptatem laborum dolore, culpa itaque praesentium
+						neque tempora, exercitationem non, mollitia dolor nihil
+						cumque!
+					</p>
+				</Panel>
+				<Panel header='This is panel header 2' key='2'>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Ab provident dicta alias perferendis aliquam magni sit
+						voluptatem laborum dolore, culpa itaque praesentium
+						neque tempora, exercitationem non, mollitia dolor nihil
+						cumque!
+					</p>
+				</Panel>
+				<Panel header='This is panel header 3' key='3'>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Ab provident dicta alias perferendis aliquam magni sit
+						voluptatem laborum dolore, culpa itaque praesentium
+						neque tempora, exercitationem non, mollitia dolor nihil
+						cumque!
+					</p>
+				</Panel>
+			</Collapse>
+			<Divider></Divider>
+			<Steps current={1}>
+				<Step title='Finished' description='This is a description.' />
+				<Step
+					title='In Progress'
+					subTitle='Left 00:00:08'
+					description='This is a description.'
+				/>
+				<Step title='Waiting' description='This is a description.' />
+			</Steps>
+			<Divider></Divider>
+			<h3>Switch Steps</h3>
+			<Steps current={current}>
+				{steps.map((item) => (
+					<Step key={item.title} title={item.title} />
+				))}
+			</Steps>
+			<div className='steps-content'>{steps[current].content}</div>
+			<div className='steps-action'>
+				{current < steps.length - 1 && (
+					<Button type='primary' onClick={() => next()}>
+						Next
+					</Button>
+				)}
+				{current === steps.length - 1 && (
+					<Button
+						type='primary'
+						onClick={() => message.success('Processing complete!')}
+					>
+						Done
+					</Button>
+				)}
+				{current > 0 && (
+					<Button style={{ margin: '0 8px' }} onClick={() => prev()}>
+						Previous
+					</Button>
+				)}
+			</div>
 			<Divider></Divider>
 			<Typography>
 				<Title>Introduction</Title>
@@ -89,7 +315,6 @@ const Home = () => {
 
 				<Divider />
 			</Typography>
-
 			<Text>Ant Design Icon</Text>
 			<Space>
 				<br />
@@ -204,6 +429,204 @@ const Home = () => {
 					</Menu>
 				</Col>
 			</Row>
+			<div className='site-page-header-ghost-wrapper'>
+				<PageHeader
+					ghost={false}
+					onBack={() => window.history.back()}
+					title='Rider'
+					subTitle='This is a Rider subtitle'
+					extra={[
+						<Button key='3'>Operation</Button>,
+						<Button key='2'>Operation</Button>,
+						<Button key='1' type='primary'>
+							Primary
+						</Button>,
+					]}
+				>
+					<Descriptions size='small' column={3}>
+						<Descriptions.Item label='Created'>
+							Bangle Tiger.
+						</Descriptions.Item>
+
+						<Descriptions.Item label='Creation Time'>
+							2022-09-10
+						</Descriptions.Item>
+						<Descriptions.Item label='Effective Time'>
+							2022-12-10
+						</Descriptions.Item>
+						<Descriptions.Item label='Remarks'>
+							Mohammadpur , Dhaka, Bangladesh
+						</Descriptions.Item>
+					</Descriptions>
+				</PageHeader>
+			</div>
+			<h2>
+				Page Header Responsive: Under different screen sizes, there
+				should be different performance
+			</h2>
+			<PageHeader
+				className='site-page-header-responsive'
+				style={{ backgroundColor: '#ddd' }}
+				onBack={() => window.history.back()}
+				title='Title'
+				subTitle='This is a subtitle'
+				extra={[
+					<Button key='3'>Operation</Button>,
+					<Button key='2'>Operation</Button>,
+					<Button key='1' type='primary'>
+						Primary
+					</Button>,
+				]}
+				footer={
+					<Tabs defaultActiveKey='1'>
+						<TabPane tab='Details' key='1' />
+						<TabPane tab='Rule' key='2' />
+					</Tabs>
+				}
+			>
+				<Content extra={extraContent}>{renderContent()}</Content>
+				<DatePicker />
+			</PageHeader>
+			<Row
+				gutter={[
+					24,
+					{
+						xs: 16,
+						sm: 24,
+						md: 24,
+						lg: 32,
+					},
+				]}
+			>
+				<Col className='gutter-row' span={6}>
+					<div style={colStyle}>col-6</div>
+				</Col>
+				<Col className='gutter-row' span={6}>
+					<div style={colStyle}>col-6</div>
+				</Col>
+				<Col className='gutter-row' span={6}>
+					<div style={colStyle}>col-6</div>
+				</Col>
+				<Col className='gutter-row' span={6}>
+					<div style={colStyle}>col-6</div>
+				</Col>{' '}
+				<Col className='gutter-row' span={6}>
+					<div style={colStyle}>col-6</div>
+				</Col>{' '}
+				<Col className='gutter-row' span={6}>
+					<div style={colStyle}>col-6</div>
+				</Col>{' '}
+				<Col className='gutter-row' span={6}>
+					<div style={colStyle}>col-6</div>
+				</Col>{' '}
+				<Col className='gutter-row' span={6}>
+					<div style={colStyle}>col-6</div>
+				</Col>
+			</Row>
+			<Row
+				// style={{ margin: '20px 0' }}
+				// gutter={[16, { xs: 8, sm: 16, md: 24, lg: 32 }]}
+				gutter={[16, 24]}
+			>
+				<Col span={6}>
+					<Card
+						title='Default size card'
+						extra={<a href='/'>More</a>}
+						style={{
+							width: 300,
+						}}
+					>
+						<p>Card content</p>
+						<p>Card content</p>
+						<p>Card content</p>
+					</Card>
+				</Col>
+				<Col span={6}>
+					<Card
+						title='Default size card'
+						extra={<a href='/'>More</a>}
+						style={{
+							width: 300,
+						}}
+					>
+						<p>Card content</p>
+						<p>Card content</p>
+						<p>Card content</p>
+					</Card>
+				</Col>
+				<Col span={6}>
+					<Card
+						title='Default size card'
+						extra={<a href='/'>More</a>}
+						style={{
+							width: 300,
+						}}
+					>
+						<p>Card content</p>
+						<p>Card content</p>
+						<p>Card content</p>
+					</Card>
+				</Col>
+				<Col span={6}>
+					<Card
+						title='Default size card'
+						extra={<a href='/'>More</a>}
+						style={{
+							width: 300,
+						}}
+					>
+						<p>Card content</p>
+						<p>Card content</p>
+						<p>Card content</p>
+					</Card>
+				</Col>
+				<Col span={6}>
+					<Card
+						title='Default size card'
+						extra={<a href='/'>More</a>}
+						style={{
+							width: 300,
+						}}
+					>
+						<p>Card content</p>
+						<p>Card content</p>
+						<p>Card content</p>
+					</Card>
+				</Col>
+			</Row>
+			<h3>Basic Pagination</h3>
+			<BackTop>
+				<div
+					style={{
+						height: 40,
+						width: 40,
+						lineHeight: '40px',
+						borderRadius: 4,
+						backgroundColor: '#1088e9',
+						color: '#fff',
+						textAlign: 'center',
+						fontSize: 20,
+					}}
+				>
+					<VerticalAlignTopOutlined />
+				</div>
+			</BackTop>
+			<Pagination defaultCurrent={1} total={50} />
+
+			<Pagination
+				showQuickJumper
+				defaultCurrent={2}
+				total={500}
+				onChange={onChange}
+			/>
+			<br />
+			<Pagination
+				showQuickJumper
+				defaultCurrent={2}
+				total={500}
+				onChange={onChange}
+				disabled
+			/>
 		</div>
 	);
 };
